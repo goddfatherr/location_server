@@ -31,7 +31,7 @@ async def server_handler(websocket, path):
 
             
             if non_zero < (0.1 * len_fingerprint):
-                message = "OOF"
+                message = "ap insuff"
             else:
                 message = knn_loc_algorithm.predict([fingerprint])
 
