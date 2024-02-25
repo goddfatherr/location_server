@@ -11,7 +11,7 @@ def process_request(request):
     scan_results = request.split('\n')
     for result in scan_results:
         components = result.strip().split(',')
-        print(components)
+        #print(components)
         bssid = components[0].strip()
 
         #first convert to float, then cast to int
