@@ -21,17 +21,17 @@ async def server_handler(websocket, path):
             fingerprint = process_aps_online.construct_fingerprint_online(connection)
             fingerprint = list(fingerprint)
             
-            #Guard against target being Out Of Range (OOF)
+            #Guard against target being Out Of Range
             non_zero = 0
             len_fingerprint = len(fingerprint)
             for j in range(len_fingerprint):
                 if fingerprint[j] != 0:
                     non_zero = non_zero + 1
-            #############################################
+            ##################################################
 
             
             if non_zero < (0.1 * len_fingerprint):
-                message = "ap insuff"
+                message = "insuff"
             else:
                 message = knn_loc_algorithm.predict([fingerprint])
 
