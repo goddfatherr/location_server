@@ -40,7 +40,11 @@ async def server_handler(websocket, path):
             print(f"Sent message back: {message}")
         except websockets.exceptions.ConnectionClosedOK:
             print("Connection closed by the client.")
-            break
+            #break
+            
+        except Exception as e:
+            print("Unexpected error:", e)
+
 
 if __name__ == "__main__":
     #load model
