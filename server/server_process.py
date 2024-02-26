@@ -34,14 +34,21 @@ async def server_handler(websocket, path):
                 message = "insuff\0"
                 await websocket.send(message)
             else:
-                message = knn_loc_algorithm.predict([fingerprint])
+                #make predictions multiple times and pick the output class with highest occurence. 
+                n_inferences = 10
+                output_classes = []
+                for i in range(n_inferences):
+                    message = knn_loc_algorithm.predict([fingerprint])
+                    output_classes.append(message)
+                message = max(output_classes, key = output_classes.count)
+                
                 await websocket.send(message[0])
             
             print(f"Sent message back: {message}")
         except websockets.exceptions.ConnectionClosedOK:
             print("Connection closed by the client.")
             #break
-            
+
         except Exception as e:
             print("Unexpected error:", e)
 
