@@ -31,11 +31,12 @@ async def server_handler(websocket, path):
 
             
             if non_zero < (0.1 * len_fingerprint):
-                message = "insuff"
+                message = "insuff\0"
+                await websocket.send(message)
             else:
                 message = knn_loc_algorithm.predict([fingerprint])
-
-            await websocket.send(message[0])
+                await websocket.send(message[0])
+            
             print(f"Sent message back: {message}")
         except websockets.exceptions.ConnectionClosedOK:
             print("Connection closed by the client.")
