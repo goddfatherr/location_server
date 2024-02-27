@@ -31,7 +31,7 @@ async def server_handler(websocket, path):
 
             
             if non_zero < (0.1 * len_fingerprint):
-                message = "insuff\0"
+                message = "insuff"
                 await websocket.send(message)
             else:
                 #make predictions multiple times and pick the output class with highest occurence. 
@@ -47,10 +47,15 @@ async def server_handler(websocket, path):
             print(f"Sent message back: {message}")
         except websockets.exceptions.ConnectionClosedOK:
             print("Connection closed by the client.")
-            #break
+            break
+        
+        except websockets.exceptions.ConnectionClosedError:
+            print("Ping Timeout: Connection closed")
+            break
 
         except Exception as e:
             print("Unexpected error:", e)
+            break
 
 
 if __name__ == "__main__":
