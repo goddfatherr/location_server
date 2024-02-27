@@ -59,9 +59,16 @@ async def server_handler(websocket, path):
 
 
 if __name__ == "__main__":
-    #load model
-    knn_loc_algorithm = joblib.load('knn_loc_algorithm.sav')
-    # Get IP address of machine
+    #load small model: 4 distinct classes: n_neighbors = 10
+    #knn_loc_algorithm = joblib.load('knn_loc_algorithm.sav')
+
+    #load expanded model: ~ 10 distinct classes: n_neighbors = 10
+    #knn_loc_algorithm = joblib.load('knn_loc_algorithmV2_10n.sav')
+
+    #load expanded model: ~ 10 distinct classes: n_neighbors = 20
+    knn_loc_algorithm = joblib.load('knn_loc_algorithmV2_20n.sav')
+    
+    #Get IP address of machine
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         s.connect(("8.8.8.8", 80))
