@@ -9,7 +9,7 @@ async def server_handler(websocket, path):
     global knn_loc_algorithm
 
     #connect to database
-    db = "devdb.db"
+    db = "devdb.db2"
     connection = sqlite3.connect(db)
 
     while True:
@@ -30,10 +30,11 @@ async def server_handler(websocket, path):
             ##################################################
 
             
-            if non_zero < (0.1 * len_fingerprint):
-                message = "insuff"
-                await websocket.send(message)
-            else:
+            #if non_zero < (0.1 * len_fingerprint):
+            #    message = "insuff"
+            #    await websocket.send(message)
+            #else:
+            if True:
                 #make predictions multiple times and pick the output class with highest occurence. 
                 n_inferences = 10
                 output_classes = []
