@@ -9,7 +9,7 @@ async def server_handler(websocket, path):
     global knn_loc_algorithm
 
     #connect to database
-    db = "devdb.db2"
+    db = "devdb2.db"
     connection = sqlite3.connect(db)
 
     while True:
