@@ -31,7 +31,7 @@ async def server_handler(websocket, path):
 
             
             #if non_zero < (0.1 * len_fingerprint):
-            samples_thresh = 10
+            samples_thresh = 1
             #if WAP count in a fingeprint is less than this figure, no reliable inference can be run
             #return insufficient data (insuff) to the client
             if non_zero < (samples_thresh):
